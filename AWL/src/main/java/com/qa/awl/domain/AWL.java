@@ -1,53 +1,55 @@
 package com.qa.awl.domain;
 
 public class AWL {
-	
-	//----Attributes----
+
+	// ----Attributes----
 	private Long id;
 	private String name;
-	private Integer episode;
-	private Integer rating;
+	private int episode;
+	private int rating;
+
 	public Long getId() {
 		return id;
 	}
-	
-	public AWL(Long id, String name, Integer episode, Integer rating) {
+
+	// ----Constructors----
+	public AWL(Long id, String name, int episode, int rating) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.episode = episode;
 		this.rating = rating;
 	}
-	
+
 	public AWL() {}
 
-
-	//----Methods----
+	// ----Methods----
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getEpisode() {
+
+	public int getEpisode() {
 		return episode;
 	}
-	public void setEpisode(Integer episode) {
+
+	public void setEpisode(int episode) {
 		this.episode = episode;
 	}
-	public Integer getRating() {
+
+	public int getRating() {
 		return rating;
 	}
-	public void setRating(Integer rating) {
+
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
-	
-	
-	
-	
-	
 
 }
