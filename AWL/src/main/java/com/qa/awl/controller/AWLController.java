@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.awl.domain.AWL;
+import com.qa.awl.service.AWLService;
 
 @RestController
 public class AWLController {
@@ -26,35 +27,38 @@ public class AWLController {
 //		return "Woo, it works";
 //	}
 	
-	private List<AWL> animeWatchList = new ArrayList<>();
+	private AWLService service;
+	
+	public AWLController(AWLService service) {
+		this.service = service;
+	}
 	
 	//---CRUD---
 	
 	//CREATE
 	@PostMapping("/create")
 	public ResponseEntity<AWL> createAnimeWatchList(@RequestBody AWL anime) {
-		this.animeWatchList.add(anime);
-		AWL added = this.animeWatchList.get(this.animeWatchList.size()-1);
-		return new ResponseEntity<>(added, HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(this.service.create(anime), HttpStatus.CREATED);
 	}
 	
 	//READ (all)
 	@GetMapping("/getAll")
 	public ResponseEntity<List<AWL>> getAnimeWatchList(){
-		return ResponseEntity.ok(animeWatchList);
+		return ResponseEntity.ok(this.service.getAll());
 	}
 	
 	//READ(one)
 	@GetMapping("/getOne/{id}")
 	public ResponseEntity<AWL> getAnimeById(@PathVariable int id) { //NOTE: this is the index position of the id
-		return ResponseEntity.ok(animeWatchList.get(id));
+		return ResponseEntity.ok(this.service.getByID(id));
 	}
 	
 	//Custom~ Find Anime by Name
 	@GetMapping("/findByName") 
 	public AWL findByName(@PathParam("name") String name) {
-		for(AWL m : animeWatchList) {
-			System.out.println(m.getName());
+		for(AWL a : this.service.getAll()) {
+			System.out.println(a.getName());
 		}
 		System.out.println(name);
 		return null;
@@ -70,7 +74,8 @@ public class AWLController {
 	//DELETE
 	@DeleteMapping("/remove/{id}")
 	public AWL removeAnime(@PathVariable int id) { //NOTE: this is the index position of the id
-		return this.animeWatchList.remove(id);
+		this.service.remove(id);
+		return this.service.getByID(id);
 	}
 	
 	
