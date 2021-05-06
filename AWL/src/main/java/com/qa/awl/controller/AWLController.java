@@ -50,32 +50,28 @@ public class AWLController {
 	
 	//READ(one)
 	@GetMapping("/getOne/{id}")
-	public ResponseEntity<AWL> getAnimeById(@PathVariable int id) { //NOTE: this is the index position of the id
+	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { //NOTE: this is the index position of the id
 		return ResponseEntity.ok(this.service.getByID(id));
 	}
 	
-	//Custom~ Find Anime by Name
+	//READ:Custom Query- Find Anime by Name
 	@GetMapping("/findByName") 
 	public AWL findByName(@PathParam("name") String name) {
-		for(AWL a : this.service.getAll()) {
-			System.out.println(a.getName());
-		}
-		System.out.println(name);
-		return null;
+		return this.service.getAnimeByName(name);
 	}
 	
-	//UPDATE ------------REVISIT THIS.
+	//UPDATE 
 	@PutMapping("/update/{id}")
-	public AWL updateAnimeList(@PathVariable int id) {//NOTE: this is the index position of the id
-		return null;
+	public ResponseEntity<AWL> updateAnimeList(@PathVariable Long id, @RequestBody AWL newAnimeObject) {
+		return new ResponseEntity<AWL>(this.service.update(id, newAnimeObject),HttpStatus.ACCEPTED);
 	}
 	
 	
 	//DELETE
 	@DeleteMapping("/remove/{id}")
-	public AWL removeAnime(@PathVariable int id) { //NOTE: this is the index position of the id
-		this.service.remove(id);
-		return this.service.getByID(id);
+	public ResponseEntity<Boolean>removeAnime(@PathVariable Long id) { //NOTE: this is the index position of the id
+		return this.service.remove(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
+			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	
