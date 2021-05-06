@@ -13,9 +13,9 @@ public interface AWLService {
 	
 	AWL create(AWL a);
 	List<AWL> getAll();
-	AWL getByID(int id);
-	boolean remove(int id);
-	AWL update(int id, AWL newAnime);
+	AWL getByID(Long id);
+	boolean remove(Long id);
+	AWL update(Long id, AWL newAnime);
 	AWL getAnimeByName(String name);
 
 	
