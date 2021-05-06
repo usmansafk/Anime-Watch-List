@@ -11,7 +11,11 @@ import com.qa.awl.domain.AWL;
 public class AnimeServiceList implements AWLService {
 
 	
-	private List<AWL> animeWatchList = new ArrayList<>();
+	private List<AWL> animeWatchList; // <--- dependency
+	
+	public AnimeServiceList(List<AWL> animeList) {
+		this.animeWatchList = animeList;
+	}
 	
 	@Override
 	public AWL create(AWL a) {
