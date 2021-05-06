@@ -1,8 +1,16 @@
 package com.qa.awl.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class AWL {
 
 	// ----Attributes----
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto-increments
 	private Long id;
 	private String name;
 	private int episode;
@@ -13,6 +21,13 @@ public class AWL {
 	}
 
 	// ----Constructors----
+	public AWL(String name, int episode, int rating) {
+		super();
+		this.name = name;
+		this.episode = episode;
+		this.rating = rating;
+	}
+	
 	public AWL(Long id, String name, int episode, int rating) {
 		super();
 		this.id = id;
