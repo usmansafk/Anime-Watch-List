@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.qa.awl.domain.AWL;
 
-@Service
 public class AnimeServiceList implements AWLService {
 
+	
+	//THIS FILE IS NOW NO LONGER IN USE!!!!!
 	
 	private List<AWL> animeWatchList; // <--- dependency
 	
