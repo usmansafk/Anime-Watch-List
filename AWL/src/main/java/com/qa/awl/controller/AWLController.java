@@ -19,60 +19,51 @@ import com.qa.awl.service.AWLService;
 
 @RestController
 public class AWLController {
-	
-//	testing.... delete later.
-//	@GetMapping("/test") //Type of Request
-//	public String test() {
-//		return "Woo, it works";
-//	} 
-	 
+
+	// ----- Instance Variables -----
 	private AWLService service;
-	
+
+	// ----- Constructor -----
 	public AWLController(AWLService service) {
 		this.service = service;
 	}
-	  
-	//---CRUD---
-	
-	//CREATE
+
+	// ----- CRUD Controller Mappings -----
+	// CREATE
 	@PostMapping("/create")
 	public ResponseEntity<AWL> createAnimeWatchList(@RequestBody AWL anime) {
-		
 		return new ResponseEntity<>(this.service.create(anime), HttpStatus.CREATED);
 	}
-	
-	//READ (all)
+
+	// READ (all)
 	@GetMapping("/getAll")
-	public ResponseEntity<List<AWL>> getAnimeWatchList(){
+	public ResponseEntity<List<AWL>> getAnimeWatchList() {
 		return ResponseEntity.ok(this.service.getAll());
-	} 
-	
-	//READ(one)
+	}
+
+	// READ(one)
 	@GetMapping("/getOne/{id}")
-	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { //NOTE: this is the index position of the id
+	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { // NOTE: this is the index position of the id
 		return ResponseEntity.ok(this.service.getByID(id));
 	}
-	
-	//READ:Custom Query- Find Anime by Name
-	@GetMapping("/findByName") 
+
+	// READ:Custom Query- Find Anime by Name
+	@GetMapping("/findByName")
 	public AWL findByName(@PathParam("name") String name) {
 		return this.service.getAnimeByName(name);
 	}
-	
-	//UPDATE 
+
+	// UPDATE
 	@PutMapping("/update/{id}")
 	public ResponseEntity<AWL> updateAnimeList(@PathVariable Long id, @RequestBody AWL newAnimeObject) {
-		return new ResponseEntity<AWL>(this.service.update(id, newAnimeObject),HttpStatus.ACCEPTED);
+		return new ResponseEntity<AWL>(this.service.update(id, newAnimeObject), HttpStatus.ACCEPTED);
 	}
-	
-	
-	//DELETE
+
+	// DELETE
 	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<Boolean>removeAnime(@PathVariable Long id) { //NOTE: this is the index position of the id
-		return this.service.remove(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
-			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<Boolean> removeAnime(@PathVariable Long id) { // NOTE: this is the index position of the id
+		return this.service.remove(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	
 
 }

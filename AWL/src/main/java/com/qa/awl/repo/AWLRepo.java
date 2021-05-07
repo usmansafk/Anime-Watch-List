@@ -7,9 +7,7 @@ import com.qa.awl.domain.AWL;
 
 @Repository
 public interface AWLRepo extends JpaRepository<AWL, Long> {
-	
+
 	AWL findByName(String name);
-	
-	
 
 }

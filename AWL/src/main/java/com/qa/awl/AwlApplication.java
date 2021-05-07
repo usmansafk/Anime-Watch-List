@@ -15,4 +15,3 @@ public class AwlApplication {
  
 }
 
-//This is the back end code created using Spring for my [AWL]Anime-Watch-List Web Application
