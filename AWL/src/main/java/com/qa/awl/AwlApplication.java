@@ -12,7 +12,7 @@ public class AwlApplication {
 		SpringApplication.run(AwlApplication.class, args);
 		
 	}
-
+ 
 }
 
 //This is the back end code created using Spring for my [AWL]Anime-Watch-List Web Application
