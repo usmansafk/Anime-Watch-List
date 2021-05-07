@@ -1,6 +1,5 @@
 package com.qa.awl.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -25,14 +24,14 @@ public class AWLController {
 //	@GetMapping("/test") //Type of Request
 //	public String test() {
 //		return "Woo, it works";
-//	}
-	
+//	} 
+	 
 	private AWLService service;
 	
 	public AWLController(AWLService service) {
 		this.service = service;
 	}
-	
+	  
 	//---CRUD---
 	
 	//CREATE
@@ -46,7 +45,7 @@ public class AWLController {
 	@GetMapping("/getAll")
 	public ResponseEntity<List<AWL>> getAnimeWatchList(){
 		return ResponseEntity.ok(this.service.getAll());
-	}
+	} 
 	
 	//READ(one)
 	@GetMapping("/getOne/{id}")
