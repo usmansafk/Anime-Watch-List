@@ -18,8 +18,8 @@ public class AWL {
 
 	public Long getId() {
 		return id;
-	}
-
+	} 
+ 
 	// ----Constructors----
 	public AWL(String name, int episode, int rating) {
 		super();
