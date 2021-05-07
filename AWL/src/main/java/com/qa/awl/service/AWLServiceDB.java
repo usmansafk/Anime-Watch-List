@@ -16,9 +16,8 @@ public class AWLServiceDB implements AWLService{
 	
 	public AWLServiceDB(AWLRepo repo) { // <-- injection
 		this.repo = repo;
-	}
+	} 
 	
-
 	@Override
 	public AWL create(AWL a) {
 		return this.repo.saveAndFlush(a);
