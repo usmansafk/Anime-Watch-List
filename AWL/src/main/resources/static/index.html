@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -12,5 +13,57 @@
     />
     <title>My Anime Watchlist</title>
   </head>
-  <body></body>
+  <body>
+    <div class="CRUD-container mt-5">
+      <h1 class="display-4 text-center">
+        MY <span class="text-danger">WATCHLIST</span>
+      </h1>
+
+      <p class="display-8 text-center">
+        Create your anime watchlist below! Make sure to update your episode
+        count and leave a rating. If you are not sure what to watch, consider
+        taking a look at our wide range of the most popular animes below.
+      </p>
+
+      <form action="" id="anime-form">
+        <div class="form-group">
+          <label for="name">Name of Anime</label>
+          <input type="text" class="form-control" id="name" name="name" />
+        </div>
+
+        <div class="form-group">
+          <label for="count">Episodes Watched</label>
+          <input type="text" class="form-control" id="count" name="count" />
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Rating out of 5</label>
+          <input type="text" class="form-control" id="rating" name="rating" />
+        </div>
+
+        <button
+          type="submit"
+          id="create-button"
+          class="btn btn-dark w-100 mt-5"
+        >
+          ADD TO MY WATCHLIST
+        </button>
+
+        <table class="table table-striped mt-5">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name of Anime</th>
+              <th>Episodes Watched</th>
+              <th>Rating out of 5</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody id="watchlist"></tbody>
+        </table>
+      </form>
+    </div>
+    <script src="/app.js"></script>
+  </body>
 </html>
