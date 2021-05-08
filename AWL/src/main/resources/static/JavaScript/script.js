@@ -3,7 +3,7 @@ class AnimeWatchList {
   constructor(name, count, rating) {
     this.name = name;
     this.count = count;
-    this.title = title;
+    this.rating = rating;
   }
 }
 
@@ -13,20 +13,20 @@ class CRUD {
 
   //READ
   static showAnimes() {
-    const anime = Anime.getAnime();
-    anime.forEach((anime) => {
+    const animes = Anime.getAnime();
+    animes.forEach((anime) => {
       CRUD.addAnimeToWatchList(anime);
     });
   }
   //CREATE
   static addAnimeToWatchList(anime) {
-    const table = document.querySelector("watchlist");
-    const row = document.querySelector("tr");
+    const table = document.querySelector("#watchlist");
+    const row = document.createElement("tr");
 
     row.innerHTML = `
         <td>${anime.name}</td>
-        <td>${book.count}</td>
-        <td>${book.rating}</td>
+        <td>${anime.count}</td>
+        <td>${anime.rating}</td>
         <td><i class="fas fa-trash-alt text-danger" onClick="CRUD.deleteAnime(event, '${anime.name}')"></i></td>
         <td><i class="far fa-edit text-primary" onClick="CRUD.updateAnime(event, '${anime.name}')"></i></td>`;
     table.appendChild(row);
@@ -34,10 +34,10 @@ class CRUD {
 
   //READ>if already exists
   static checkForAnime(name) {
-    const anime = Anime.getAnime();
+    const animes = Anime.getAnime();
     let alert = false;
 
-    anime.forEach((show, id) => {
+    animes.forEach((show, id) => {
       if (show.name === name) {
         alert = true;
       }
@@ -47,7 +47,7 @@ class CRUD {
 
   //UPDATE
   static updateAnimeInWatchList(anime) {
-    if (CRUD.updateWatchList && CRUD.updateTarget) {
+    if (CRUD.updateTarget && CRUD.updateWatchList) {
       let row = CRUD.updateTarget.parentElement.parentElement;
       row.innerHTML = `
           <td>${anime.name}</td>
@@ -65,20 +65,20 @@ class CRUD {
 
     let animeList = Anime.getAnime();
     animeList.forEach((anime, id) => {
-      if (anime === name) {
+      if (anime.name === name) {
         document.querySelector("#name").value = anime.name;
         document.querySelector("#count").value = anime.count;
         document.querySelector("#rating").value = anime.rating;
       }
     });
 
-    document.getElementById("submitBtn").innerHTML = "UPDATE ANIME";
+    document.getElementById("create-button").innerHTML = "UPDATE ANIME";
   }
 
-  static removeAnime(event, name) {
+  static deleteAnime(event, name) {
     event.target.parentElement.parentElement.remove();
-    Store.removeAnime(name);
-    CRUD.showAlertMessage("Anime removed from watch list", "success");
+    Anime.deleteAnime(name);
+    CRUD.confirmCRUD("Anime removed from watch list", "success");
   }
 
   static refreshInputBox() {
@@ -95,11 +95,93 @@ class CRUD {
     const div = document.createElement("div");
     div.className = `alert alert-${classname}`;
     div.innerHTML = message;
-    const container = document.querySelector(".container");
+    const container = document.querySelector(".CRUD-container");
     container.insertBefore(div, document.querySelector("#anime-form"));
 
     setTimeout(() => {
       document.querySelector(".alert").remove();
-    }, 2000);
+    }, 3000);
   }
 }
+//-------------------
+class Anime {
+  static getAnime() {
+    let animes;
+    if (localStorage.getItem("animes") === null) {
+      animes = [];
+    } else {
+      animes = JSON.parse(localStorage.getItem("animes"));
+    }
+    return animes;
+  }
+
+  static addAnime(anime) {
+    const animes = Anime.getAnime();
+    if (CRUD.updateWatchList) {
+      Anime.updatedAnime(anime);
+    } else {
+      animes.push(anime);
+      localStorage.setItem("animes", JSON.stringify(animes));
+    }
+  }
+
+  static deleteAnime(name) {
+    const animes = Anime.getAnime();
+    animes.forEach((anime, id) => {
+      if (anime.name === name) {
+        animes.splice(id, 1);
+      }
+    });
+
+    localStorage.setItem("animes", JSON.stringify(animes));
+  }
+
+  static updatedAnime(anime) {
+    const animes = Anime.getAnime();
+    animes.forEach((show, id) => {
+      if (show.name === anime.name) {
+        animes[id] = anime;
+      }
+    });
+
+    localStorage.setItem("animes", JSON.stringify(animes));
+  }
+}
+
+//----------------
+document.addEventListener("DOMContentLoaded", CRUD.showAnimes());
+
+document.querySelector("#anime-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = document.querySelector("#name").value;
+  const count = document.querySelector("#count").value;
+  const rating = document.querySelector("#rating").value;
+
+  if (name === "") {
+    CRUD.confirmCRUD("Please enter an anime name ", "danger");
+  } else if (count === "") {
+    CRUD.confirmCRUD("Please enter which episode you are on", "danger");
+  } else if (rating === "") {
+    CRUD.confirmCRUD("Please enter your rating for the show", "danger");
+  } else {
+    const anime = new AnimeWatchList(name, count, rating);
+
+    if (CRUD.updateWatchList) {
+      CRUD.updateAnimeInWatchList(anime);
+      message = "Anime updated";
+      Anime.addAnime(anime);
+      CRUD.confirmCRUD("Anime updated", "success");
+      CRUD.refreshInputBox();
+    } else {
+      const nameExists = CRUD.checkForAnime(name);
+      if (nameExists) {
+        CRUD.confirmCRUD("This anime is already on your watch list", "danger");
+      } else {
+        CRUD.addAnimeToWatchList(anime);
+        Anime.addAnime(anime);
+        CRUD.confirmCRUD("Anime added", "success");
+        CRUD.refreshInputBox();
+      }
+    }
+  }
+});
