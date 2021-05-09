@@ -34,7 +34,7 @@ public class AWLServiceDB implements AWLService {
 	public AWL getByID(Long id) {
 		Optional<AWL> optionalAnime = this.repo.findById(id);
 		return optionalAnime.get();
-	}
+	} 
 
 	@Override
 	public AWL getAnimeByName(String name) {
