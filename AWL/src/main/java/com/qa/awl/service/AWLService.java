@@ -1,23 +1,54 @@
 package com.qa.awl.service;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.qa.awl.domain.AWL;
+import com.qa.awl.repo.AWLRepo;
 
-public interface AWLService {
+@Service
+public class AWLService {
 
-	// ----- Template Class -----
-	// ----- CRUD OPERATIONS -----
-	AWL create(AWL a);
+	// ----- Instance Variables -----
+	private AWLRepo repo; // <-- dependency
 
-	List<AWL> getAll();
+	// ----- Constructor -----
+	public AWLService(AWLRepo repo) { // <-- injection
+		this.repo = repo;
+	}
+ 
+	// ----- CRUD Methods -----
+	public AWL create(AWL a) {
+		return this.repo.saveAndFlush(a);
+	}
 
-	AWL getByID(Long id);
+	public List<AWL> getAll() {
+		return this.repo.findAll();
+	}
 
-	boolean remove(Long id);
+	public AWL getByID(Long id) {
+		Optional<AWL> optionalAnime = this.repo.findById(id);
+		return optionalAnime.get();
+	} 
 
-	AWL update(Long id, AWL newAnime);
+	public AWL getAnimeByName(String name) {
+		return this.repo.findByName(name);
+	}
 
-	AWL getAnimeByName(String name);
+	public AWL update(Long id, AWL updateAnimeInfo) {
+		AWL anime = this.repo.findById(id).orElseThrow();
+		anime.setName(updateAnimeInfo.getName());
+		anime.setEpisode(updateAnimeInfo.getEpisode());
+		anime.setRating(updateAnimeInfo.getRating());
+		return this.repo.saveAndFlush(anime);
+	}
+
+	public boolean remove(Long id) {
+		this.repo.deleteById(id);
+		return !this.repo.existsById(id);
+
+	}
 
 }
