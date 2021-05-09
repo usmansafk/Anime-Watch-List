@@ -104,6 +104,7 @@ class CRUD {
   }
 }
 //------------------------------------------------------------------
+
 class Anime {
   static getAnime() {
     let animes;
