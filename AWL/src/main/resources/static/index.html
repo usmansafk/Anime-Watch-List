@@ -1,69 +1,190 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css" />
-    <link
+    
+    <link rel="stylesheet" href="/CSS/style.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="logo" href="/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" > <!-- remove this-->
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.ico" />
+
+<link rel="icon" href="/animewatchlist/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" />
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
-    <title>My Anime Watchlist</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <title>Anime Watch List</title>
   </head>
+
   <body>
-    <div class="CRUD-container mt-5">
-      <h1 class="display-4 text-center">
-        MY <span class="text-danger">WATCHLIST</span>
-      </h1>
+    <!-- Navbar Section -->
+    <nav class="black-navbar">
+      <div class="navbar-container">
+        <a id="navbar-logo"><span class="a">A</span>WL</a>
+        <ul class="navbar-menu">
+          <li class="navbar-item">
+            <a href="#home" class="navbar-links" >Welcome</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#create" class="navbar-links" >Create</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#anime-list" class="navbar-links" 
+              >Anime</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <p class="display-8 text-center">
-        Create your anime watchlist below! Make sure to update your episode
-        count and leave a rating. If you are not sure what to watch, consider
-        taking a look at our wide range of the most popular animes below.
-      </p>
-
-      <form action="" id="anime-form">
-        <div class="form-group">
-          <label for="name">Name of Anime</label>
-          <input type="text" class="form-control" id="name" name="name" />
-        </div>
-
-        <div class="form-group">
-          <label for="count">Episodes Watched</label>
-          <input type="text" class="form-control" id="count" name="count" />
-        </div>
-
-        <div class="form-group">
-          <label for="rating">Rating out of 5</label>
-          <input type="text" class="form-control" id="rating" name="rating" />
-        </div>
-
-        <button
-          type="submit"
-          id="create-button"
-          class="btn btn-dark w-100 mt-5"
-        >
-          ADD TO MY WATCHLIST
-        </button>
-
-        <table class="table table-striped mt-5">
-          <thead class="thead-dark">
-            <tr>
-              <th>Name of Anime</th>
-              <th>Episodes Watched</th>
-              <th>Rating out of 5</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody id="watchlist"></tbody>
-        </table>
-      </form>
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+      <div class="hero-container">
+        <img class="animeboy" src="/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" alt="">
+        <video autoplay muted loop id="myVideo">
+          <source src="/Resources/videoplayback.mp4" type="video/mp4" />
+        </video>
+        
+        <h1 class="hero-heading"><span>ANIME</span> WATCH LIST</h1>
+      
+        <button class="main__btn"><a href="#create">Create</a></button>
+        
+      </div>
     </div>
+
+    <!-- CRUD Section -->
+    <div class="main" id="create">
+      <div class="container">
+        <h1 class="display-4 text-center">
+          MY <span class="text-danger">WATCHLIST</span>
+        </h1>
+  
+        <p class="display-8 text-center">
+          Create your anime watchlist below! Make sure to update your episode
+          count and leave a rating. If you are not sure what to watch, consider
+          taking a look at our wide range of the most popular animes below.
+        </p>
+  
+        <form action="" id="anime-form" autocomplete="off">
+          <div class="form-group">
+            <input type="text" placeholder="Name of Anime" class="form-control" id="name" name="name" />
+          </div>
+  
+          <div class="form-group">
+            <br>
+            <input type="text" placeholder="Episodes Watched" class="form-control" id="count" name="count" />
+          </div>
+  
+          <div class="form-group">
+            <br>
+            <input type="number" placeholder ="Rating out of 5" min = "0" max = "5" class="form-control" id="rating" name="rating" />
+          </div>
+  
+          <button
+            type="submit"
+            id="create-button"
+            class="btn btn-dark w-100 mt-5"
+          >
+          ADD TO MY WATCHLIST
+          </button>
+  
+          <table class="table table-striped mt-5">
+            <thead class="thead-dark">
+              <tr>
+                <th>Name of Anime</th>
+                <th>Episodes Watched</th>
+                <th>Rating out of 5</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+  
+            <tbody id="watchlist"></tbody>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <!-- Anime Display Section-->
+    <div class="anime-list" id="anime-list">
+      <h1>ANIME LIST</h1>
+        <h2 class="trending">CURRENTLY TRENDING . . .</h2>
+      
+     
+      <div class="anime-wrapper">
+        <div class="anime-card">
+  
+          <div class="anime-name"><button>Naruto Shippuden</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Attack on Titan</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>One Punch Man</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Death Note</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>HunterxHunter</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Dragon Ball Z</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Demon Slayer</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Tokyo Ghoul</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Haikyu!!</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>Full Metal Alchemist</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>One Piece</button></div>
+        </div>
+        <div class="anime-card">
+          <div class="anime-name"><button>My Hero Academia</button></div>
+        </div>
+        
+        
+      </div>
+    </div>
+
+   <!-- Footer Section -->
+    <div class="footer-container">
+      <!-- <div class="footer-links">
+  
+      </div> -->
+      <section class="social-media">
+        <div class="social-media-wrap">
+          <div class="footer-logo">
+            <a id="footer-logo">AWL</a>
+          </div>
+          <p class="website-rights">Website devolped by Usman. © AWL 2021. QA ProjectII.</p>
+          <a target="_blank" href="https://github.com/usmansafk" class="social-link"
+              ><i class="fab fa-github"></i
+            ></a>
+
+            <a target="_blank" href="https://www.linkedin.com/in/usmansajidcode/" class="social-link"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
     <script src="/JavaScript/script.js"></script>
   </body>
 </html>

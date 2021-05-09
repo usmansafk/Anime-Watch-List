@@ -1,4 +1,4 @@
-//-----CRUD for an anime-----
+//-----------CRUD for an anime-----------
 class AnimeWatchList {
   constructor(name, count, rating) {
     this.name = name;
@@ -95,7 +95,7 @@ class CRUD {
     const div = document.createElement("div");
     div.className = `alert alert-${classname}`;
     div.innerHTML = message;
-    const container = document.querySelector(".CRUD-container");
+    const container = document.querySelector(".container");
     container.insertBefore(div, document.querySelector("#anime-form"));
 
     setTimeout(() => {
@@ -103,7 +103,7 @@ class CRUD {
     }, 3000);
   }
 }
-//-------------------
+//------------------------------------------------------------------
 class Anime {
   static getAnime() {
     let animes;
@@ -147,8 +147,7 @@ class Anime {
     localStorage.setItem("animes", JSON.stringify(animes));
   }
 }
-
-//----------------
+//------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", CRUD.showAnimes());
 
 document.querySelector("#anime-form").addEventListener("submit", (e) => {
