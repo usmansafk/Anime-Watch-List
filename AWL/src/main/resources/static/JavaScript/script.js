@@ -104,6 +104,7 @@ class CRUD {
   }
 }
 //------------------------------------------------------------------
+
 class Anime {
   static getAnime() {
     let animes;
@@ -148,6 +149,7 @@ class Anime {
   }
 }
 //------------------------------------------------------------------
+
 document.addEventListener("DOMContentLoaded", CRUD.showAnimes());
 
 document.querySelector("#anime-form").addEventListener("submit", (e) => {
