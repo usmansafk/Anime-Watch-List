@@ -195,6 +195,34 @@ class Anime {
 
     localStorage.setItem("animes", JSON.stringify(animes));
   }
+
+  static addAnime(anime) {
+    const animes = Anime.getAnime();
+    if (CRUD.updateWatchList) {
+      Anime.updatedAnime(anime);
+    } else {
+      const nameExists = CRUD.checkForAnime(name);
+      if (nameExists) {
+        CRUD.confirmCRUD("This anime is already on your watch list", "danger");
+      } else {
+        fetch("http://localhost:9091/AWL/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: anime.name,
+            episode: anime.watched,
+            rating: anime.rating,
+          }),
+        }).then((res) => {
+          //animes.push(anime);
+          return res.json();
+        });
+      }
+      //localStorage.setItem("animes", JSON.stringify(animes));
+    }
+  }
 }
 //------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", CRUD.showAnimes());
@@ -224,15 +252,20 @@ document.querySelector("#anime-form").addEventListener("submit", (e) => {
       CRUD.confirmCRUD("Anime updated", "success");
       CRUD.refreshInputBox();
     } else {
-      const nameExists = CRUD.checkForAnime(name);
-      if (nameExists) {
-        CRUD.confirmCRUD("This anime is already on your watch list", "danger");
-      } else {
-        CRUD.addAnimeToWatchList(anime);
-        Anime.addAnime(anime);
-        CRUD.confirmCRUD("Anime added", "success");
-        CRUD.refreshInputBox();
-      }
+      // const nameExists = CRUD.checkForAnime(name);
+      CRUD.addAnimeToWatchList(anime);
+      //Anime.addAnime(anime);
+      CRUD.confirmCRUD("Anime added", "success");
+      CRUD.refreshInputBox();
+
+      // if (nameExists) {
+      //   CRUD.confirmCRUD("This anime is already on your watch list", "danger");
+      // } else {
+      //   CRUD.addAnimeToWatchList(anime);
+      //   //Anime.addAnime(anime);
+      //   CRUD.confirmCRUD("Anime added", "success");
+      //   CRUD.refreshInputBox();
+      // }
     }
   }
 });
