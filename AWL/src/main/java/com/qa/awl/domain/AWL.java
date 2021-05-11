@@ -1,5 +1,7 @@
 package com.qa.awl.domain;
 
+import lombok.Builder;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Builder
 public class AWL {
 
 	// ----Attributes----
