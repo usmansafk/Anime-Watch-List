@@ -7,11 +7,10 @@
     
     <link rel="stylesheet" href="/CSS/style.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="logo" href="/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" > <!-- remove this-->
+    <link rel="icon" href="/Resources/anime-girl-with-two-pony-tails_icon-icons.com_68045.ico">
+
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.ico" />
-
-<link rel="icon" href="/animewatchlist/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" />
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 <link
       rel="stylesheet"
@@ -20,7 +19,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
-    <title>Anime Watch List</title>
+    <title>AWL</title>
   </head>
 
   <body>
@@ -37,7 +36,7 @@
           </li>
           <li class="navbar-item">
             <a href="#anime-list" class="navbar-links" 
-              >Anime</a
+              >Inspiration</a
             >
           </li>
         </ul>
@@ -47,7 +46,7 @@
     <!-- Hero Section -->
     <div class="hero" id="home">
       <div class="hero-container">
-        <img class="animeboy" src="/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" alt="">
+        <img class="animeboy" src="/Resources/anime-boy-with-shummer-clothes_icon-icons.com_68058.ico" alt="Anime Boy!">
         <video autoplay muted loop id="myVideo">
           <source src="/Resources/videoplayback.mp4" type="video/mp4" />
         </video>
@@ -79,7 +78,7 @@
   
           <div class="form-group">
             <br>
-            <input type="text" placeholder="Episodes Watched" class="form-control" id="count" name="count" />
+            <input type="text" placeholder="Episodes Watched" class="form-control" id="watched" name="watched" />
           </div>
   
           <div class="form-group">
@@ -87,7 +86,7 @@
             <input type="number" placeholder ="Rating out of 5" min = "0" max = "5" class="form-control" id="rating" name="rating" />
           </div>
   
-          <button
+          <button onclick="onClickCreateNew()"
             type="submit"
             id="create-button"
             class="btn btn-dark w-100 mt-5"
@@ -112,78 +111,75 @@
       </div>
     </div>
 
-    <!-- Anime Display Section-->
-    <div class="anime-list" id="anime-list">
-      <h1>ANIME LIST</h1>
-        <h2 class="trending">CURRENTLY TRENDING . . .</h2>
-      
-     
-      <div class="anime-wrapper">
-        <div class="anime-card">
+<!-- Anime Inspiration Section-->
+<div class="anime-list" id="anime-list">
+  <h1>ANIME LIST</h1>
+    <h2 class="trending">CURRENTLY TRENDING . . .</h2>
   
-          <div class="anime-name"><button>Naruto Shippuden</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Attack on Titan</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>One Punch Man</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Death Note</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>HunterxHunter</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Dragon Ball Z</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Demon Slayer</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Tokyo Ghoul</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Haikyu!!</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>Full Metal Alchemist</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>One Piece</button></div>
-        </div>
-        <div class="anime-card">
-          <div class="anime-name"><button>My Hero Academia</button></div>
-        </div>
-        
-        
-      </div>
+  <div class="anime-wrapper">
+    <div class="anime-card">
+      <div class="anime-name"><button>Naruto Shippuden</button></div>
     </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Attack on Titan</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>One Punch Man</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Death Note</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>HunterxHunter</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Dragon Ball Z</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Demon Slayer</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Tokyo Ghoul</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Haikyu!!</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>Full Metal Alchemist</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>One Piece</button></div>
+    </div>
+    <div class="anime-card">
+      <div class="anime-name"><button>My Hero Academia</button></div>
+    </div>
+    
+  </div>
+</div>
 
    <!-- Footer Section -->
-    <div class="footer-container">
-      <!-- <div class="footer-links">
-  
-      </div> -->
-      <section class="social-media">
-        <div class="social-media-wrap">
-          <div class="footer-logo">
-            <a id="footer-logo">AWL</a>
-          </div>
-          <p class="website-rights">Website devolped by Usman. © AWL 2021. QA ProjectII.</p>
-          <a target="_blank" href="https://github.com/usmansafk" class="social-link"
-              ><i class="fab fa-github"></i
-            ></a>
+   <div class="footer-container">
+    <!-- <div class="footer-links">
 
-            <a target="_blank" href="https://www.linkedin.com/in/usmansajidcode/" class="social-link"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-
-          </div>
+    </div> -->
+    <section class="social-media">
+      <div class="social-media-wrap">
+        <div class="footer-logo">
+          <a id="footer-logo">AWL</a>
         </div>
-      </section>
-    </div>
+        <p class="website-rights">Website devolped by Usman. © AWL 2021. QA ProjectII.</p>
+        <a target="_blank" href="https://github.com/usmansafk" class="social-link"
+            ><i class="fab fa-github"></i
+          ></a>
+
+          <a target="_blank" href="https://www.linkedin.com/in/usmansajidcode/" class="social-link"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+
+        </div>
+      </div>
+    </section>
+  </div>
 
     <script src="/JavaScript/script.js"></script>
   </body>
