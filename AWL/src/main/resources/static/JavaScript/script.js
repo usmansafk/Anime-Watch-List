@@ -1,23 +1,77 @@
-//-----------CRUD for an anime-----------
+const API_URL = "http://localhost:9092";
+let createNewFlag = false;
+let updateFlag = false;
+let selectedId = "";
+
+function onClickCreateNew() {
+  if (!updateFlag) createNewFlag = true;
+}
+
 class AnimeWatchList {
   constructor(name, count, rating) {
     this.name = name;
     this.count = count;
     this.rating = rating;
+
+    if (createNewFlag) {
+      createNewFlag = false; //setting creatNewRequest Flag to false
+      fetch(`${API_URL}/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.name,
+          episode: this.count,
+          rating: this.rating,
+        }),
+      }).then((res) => {
+        this.name = ""; //clearing up variables
+        this.count = "";
+        this.rating = "";
+        location.reload(true);
+        return res.json();
+      });
+    }
+
+    if (updateFlag) {
+      updateFlag = false;
+      fetch(`${API_URL}/update/` + selectedId, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: selectedId,
+          name: this.name,
+          episode: this.count,
+          rating: this.rating,
+        }),
+      }).then((res) => {
+        this.name = ""; //clearing up variables
+        this.count = "";
+        this.rating = "";
+        selectedId = "";
+        location.reload(true);
+        return res.json();
+      });
+    }
   }
 }
 
 class CRUD {
   updateWatchList = false;
   updateTarget = null;
+  animes = "";
 
   //READ
-  static showAnimes() {
-    const animes = Anime.getAnime();
+  static async showAnimes() {
+    const animes = await Anime.getAnime();
     animes.forEach((anime) => {
       CRUD.addAnimeToWatchList(anime);
     });
   }
+
   //CREATE
   static addAnimeToWatchList(anime) {
     const table = document.querySelector("#watchlist");
@@ -25,16 +79,18 @@ class CRUD {
 
     row.innerHTML = `
         <td>${anime.name}</td>
-        <td>${anime.count}</td>
+        <td>${anime.episode}</td>
         <td>${anime.rating}</td>
         <td><i class="fas fa-trash-alt text-danger" onClick="CRUD.deleteAnime(event, '${anime.name}')"></i></td>
         <td><i class="far fa-edit text-primary" onClick="CRUD.updateAnime(event, '${anime.name}')"></i></td>`;
+
+    console.log("ADD ANIME CALL MADE");
     table.appendChild(row);
   }
 
   //READ>if already exists
-  static checkForAnime(name) {
-    const animes = Anime.getAnime();
+  static async checkForAnime(name) {
+    const animes = await Anime.getAnime();
     let alert = false;
 
     animes.forEach((show, id) => {
@@ -59,15 +115,17 @@ class CRUD {
   }
 
   // () for UPDATING and DELETING
-  static updateAnime(event, name) {
+  static async updateAnime(event, name) {
     CRUD.updateTarget = event.target;
     CRUD.updateWatchList = true;
+    updateFlag = true;
 
-    let animeList = Anime.getAnime();
+    let animeList = await Anime.getAnime();
     animeList.forEach((anime, id) => {
       if (anime.name === name) {
+        selectedId = anime.id;
         document.querySelector("#name").value = anime.name;
-        document.querySelector("#count").value = anime.count;
+        document.querySelector("#watched").value = anime.episode;
         document.querySelector("#rating").value = anime.rating;
       }
     });
@@ -83,7 +141,7 @@ class CRUD {
 
   static refreshInputBox() {
     document.querySelector("#name").value = "";
-    document.querySelector("#count").value = "";
+    document.querySelector("#watched").value = "";
     document.querySelector("#rating").value = "";
     CRUD.updateWatchList = false;
     CRUD.updateTarget = null;
@@ -100,48 +158,38 @@ class CRUD {
 
     setTimeout(() => {
       document.querySelector(".alert").remove();
-    }, 3000);
+    }, 4000);
   }
 }
 //------------------------------------------------------------------
 
 class Anime {
-  static getAnime() {
+  static async getAnime() {
     let animes;
-    if (localStorage.getItem("animes") === null) {
-      animes = [];
-    } else {
-      animes = JSON.parse(localStorage.getItem("animes"));
-    }
+    await fetch(`${API_URL}/getAll`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        if (data != undefined) {
+          animes = data;
+          console.log(data);
+          return animes;
+        }
+      });
     return animes;
   }
 
-  static addAnime(anime) {
-    const animes = Anime.getAnime();
-    if (CRUD.updateWatchList) {
-      Anime.updatedAnime(anime);
-    } else {
-      animes.push(anime);
-      localStorage.setItem("animes", JSON.stringify(animes));
-    }
-  }
-
-  static deleteAnime(name) {
-    const animes = Anime.getAnime();
+  static async deleteAnime(name) {
+    const animes = await Anime.getAnime();
     animes.forEach((anime, id) => {
       if (anime.name === name) {
-        animes.splice(id, 1);
-      }
-    });
-
-    localStorage.setItem("animes", JSON.stringify(animes));
-  }
-
-  static updatedAnime(anime) {
-    const animes = Anime.getAnime();
-    animes.forEach((show, id) => {
-      if (show.name === anime.name) {
-        animes[id] = anime;
+        fetch(`${API_URL}/remove/` + anime.id, {
+          method: "DELETE",
+        }).then((res) => {
+          console.log("deleted");
+        });
+        // animes.splice(id, 1);
       }
     });
 
@@ -154,7 +202,7 @@ document.addEventListener("DOMContentLoaded", CRUD.showAnimes());
 document.querySelector("#anime-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const name = document.querySelector("#name").value;
-  const count = document.querySelector("#count").value;
+  const count = document.querySelector("#watched").value;
   const rating = document.querySelector("#rating").value;
 
   if (name === "") {
@@ -165,11 +213,14 @@ document.querySelector("#anime-form").addEventListener("submit", (e) => {
     CRUD.confirmCRUD("Please enter your rating for the show", "danger");
   } else {
     const anime = new AnimeWatchList(name, count, rating);
+    if (createNewFlag) {
+      Anime.addAnime(anime);
+    }
 
     if (CRUD.updateWatchList) {
       CRUD.updateAnimeInWatchList(anime);
       message = "Anime updated";
-      Anime.addAnime(anime);
+      //Anime.addAnime(anime);
       CRUD.confirmCRUD("Anime updated", "success");
       CRUD.refreshInputBox();
     } else {
