@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +22,7 @@ import com.qa.awl.service.AWLService;
 
 @RestController
 //@RequestMapping("/AWL")
+@RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class AWLController {
 
