@@ -1,22 +1,23 @@
 package com.qa.awl.service;
 
-import com.qa.awl.domain.AWL;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-
-import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.qa.awl.domain.AWL;
 import com.qa.awl.repo.AWLRepo;
-
-import java.util.*;
 
 @SpringBootTest
 public class AWLServiceUnitTest {
@@ -36,11 +37,8 @@ public class AWLServiceUnitTest {
 		return awl;
 	}
 
-	
-	
 	@Test
 	void getAllTest() {
-
 		List<AWL> list = new ArrayList<>();
 		list.add(0, stub());
 		list.add(1, stub());
@@ -50,19 +48,10 @@ public class AWLServiceUnitTest {
 
 	@Test
 	void createTest() {
-	
+
 		when(this.repo.saveAndFlush(any())).thenReturn(stub());
 		AWL id = this.service.create(stub());
 		Assert.assertEquals(id.getRating(), 1);
-//		Assert.assertEquals(this.repo.equals(id), stub());
-		
-//		AWL anime = new AWL(1L,"opm",1,1);
-//		AWL savedAnime = new AWL(1L, "opm", 1, 1);
-//		Mockito.when(this.repo.save(anime).isEqualTo(savedAnime));
-//		Mockito.verify(this.repo, Mockito.times(1).save(anime));
-
-		
-		
 	}
 
 	@Test
@@ -87,9 +76,9 @@ public class AWLServiceUnitTest {
 		when(repo.saveAndFlush(any())).thenReturn(stub());
 		AWL response = service.update(1L, stub());
 		Assert.assertEquals(response.getName(), "opm");
-		  
+
 	}
- 
+
 	@Test
 	void removeTest() {
 		when(service.remove(1l)).thenReturn(true);
