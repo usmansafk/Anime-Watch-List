@@ -5,8 +5,12 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
+
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -32,6 +36,8 @@ public class AWLServiceUnitTest {
 		return awl;
 	}
 
+	
+	
 	@Test
 	void getAllTest() {
 
@@ -45,9 +51,18 @@ public class AWLServiceUnitTest {
 	@Test
 	void createTest() {
 	
-		when(repo.saveAndFlush(any())).thenReturn(stub());
-		AWL id = service.create(stub());
+		when(this.repo.saveAndFlush(any())).thenReturn(stub());
+		AWL id = this.service.create(stub());
 		Assert.assertEquals(id.getRating(), 1);
+//		Assert.assertEquals(this.repo.equals(id), stub());
+		
+//		AWL anime = new AWL(1L,"opm",1,1);
+//		AWL savedAnime = new AWL(1L, "opm", 1, 1);
+//		Mockito.when(this.repo.save(anime).isEqualTo(savedAnime));
+//		Mockito.verify(this.repo, Mockito.times(1).save(anime));
+
+		
+		
 	}
 
 	@Test
