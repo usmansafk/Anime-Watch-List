@@ -48,7 +48,6 @@ public class AWLService {
 	public boolean remove(Long id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
-
 	}
 
 }

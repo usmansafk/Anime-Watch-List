@@ -5,6 +5,8 @@ import java.util.List;
 import javax.websocket.server.PathParam;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,17 +32,18 @@ public class AWLController {
 	private AWLService service;
 
 	// ----- Constructor -----
+	@Autowired
 	public AWLController(AWLService service) {
 		this.service = service;
 	}
  
 	// ----- CRUD Controller Mappings -----
+	
 	// CREATE
 	@PostMapping("/create")
 	public ResponseEntity<AWL> createAnimeWatchList(@RequestBody AWL anime) {
 		return new ResponseEntity<>(this.service.create(anime), HttpStatus.CREATED);
 	} 
-
 	// READ (all)
 	@GetMapping("/getAll")
 	public ResponseEntity<List<AWL>> getAnimeWatchList() {

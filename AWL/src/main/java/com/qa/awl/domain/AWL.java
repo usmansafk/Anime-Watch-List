@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-
-
 @Entity
 @Builder
 public class AWL {
@@ -114,8 +112,5 @@ public class AWL {
 			return false;
 		return true;
 	}
-
-
-	
 
 }
