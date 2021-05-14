@@ -205,7 +205,7 @@ class Anime {
       if (nameExists) {
         CRUD.confirmCRUD("This anime is already on your watch list", "danger");
       } else {
-        fetch("http://localhost:9091/AWL/create", {
+        fetch(`${API_URL}/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
