@@ -1,7 +1,5 @@
 package com.qa.awl.domain;
 
-import lombok.Builder;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +7,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Builder
 public class AWL {
@@ -38,16 +46,16 @@ public class AWL {
 		this.rating = rating;
 	}
 
-	public AWL(Long id, String name, int episode, int rating) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.episode = episode;
-		this.rating = rating;
-	}
-
-	public AWL() {
-	}
+//	public AWL(Long id, String name, int episode, int rating) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.episode = episode;
+//		this.rating = rating;
+//	}
+//
+//	public AWL() {
+//	}
 
 	// ----Methods----
 	public void setId(Long id) {
