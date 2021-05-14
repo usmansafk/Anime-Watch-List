@@ -24,7 +24,7 @@ public class AWL {
 	@Column (unique = true)
 	private String name;
 	private int episode;
-	private int rating;
+	private int rating; 
 
 	public Long getId() {
 		return id;
