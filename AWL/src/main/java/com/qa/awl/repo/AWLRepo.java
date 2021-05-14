@@ -11,3 +11,4 @@ public interface AWLRepo extends JpaRepository<AWL, Long> {
 	AWL findByName(String name);
 
 }
+

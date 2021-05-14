@@ -11,15 +11,15 @@ import com.qa.awl.repo.AWLRepo;
 @Service
 public class AWLService {
 
-	// ----- Instance Variables -----
+// ----- Instance Variables -----
 	private AWLRepo repo; // <-- dependency
 
-	// ----- Constructor -----
+// ----- Constructor -----
 	public AWLService(AWLRepo repo) { // <-- injection
 		this.repo = repo;
 	}
- 
-	// ----- CRUD Methods -----
+
+// ----- CRUD Methods -----
 	public AWL create(AWL a) {
 		return this.repo.saveAndFlush(a);
 	}
@@ -31,7 +31,7 @@ public class AWLService {
 	public AWL getByID(Long id) {
 		Optional<AWL> optionalAnime = this.repo.findById(id);
 		return optionalAnime.get();
-	} 
+	}
 
 	public AWL getAnimeByName(String name) {
 		return this.repo.findByName(name);
