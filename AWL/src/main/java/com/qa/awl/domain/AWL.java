@@ -27,9 +27,9 @@ public class AWL {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increments
 	private Long id;
-	
+
 	@NotNull(message = "The name of the anime must be entered")
-	@Column (unique = true)
+	@Column(unique = true)
 	private String name;
 	private int episode;
 	private int rating;
@@ -86,44 +86,41 @@ public class AWL {
 		this.rating = rating;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + episode;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + rating;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AWL other = (AWL) obj;
-		if (episode != other.episode)
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (rating != other.rating)
-			return false;
-		return true;
-	}
-
-
-	
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + episode;
+//		result = prime * result + ((id == null) ? 0 : id.hashCode());
+//		result = prime * result + ((name == null) ? 0 : name.hashCode());
+//		result = prime * result + rating;
+//		return result;
+//	}
+//
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		AWL other = (AWL) obj;
+//		if (episode != other.episode)
+//			return false;
+//		if (id == null) {
+//			if (other.id != null)
+//				return false;
+//		} else if (!id.equals(other.id))
+//			return false;
+//		if (name == null) {
+//			if (other.name != null)
+//				return false;
+//		} else if (!name.equals(other.name))
+//			return false;
+//		if (rating != other.rating)
+//			return false;
+//		return true;
+//	}
 
 }
