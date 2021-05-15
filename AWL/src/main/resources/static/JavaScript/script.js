@@ -136,7 +136,7 @@ class CRUD {
   static deleteAnime(event, name) {
     event.target.parentElement.parentElement.remove();
     Anime.deleteAnime(name);
-    CRUD.confirmCRUD("Anime removed from watch list", "success");
+    CRUD.confirmCRUD("Anime removed from watch list", "danger");
   }
 
   static refreshInputBox() {

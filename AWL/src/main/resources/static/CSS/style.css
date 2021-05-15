@@ -363,6 +363,10 @@ video {
   opacity: 1;
 }
 
+.anime-name > button {
+  pointer-events: none;
+}
+
 .anime-card:hover {
   transform: scale(1.075);
   transition: 0.3s ease-in;
