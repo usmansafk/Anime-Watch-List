@@ -25,16 +25,17 @@ import com.qa.awl.selenium.page.AWLHomePage;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class AWLPageTest {
 
+
 	@LocalServerPort
 	static int randomPort;
-
+	
 	public static final String URL = "http://localhost:";
 
 	private WebDriver driver;
 
 	@Before
-	void init() {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+	public void init() {
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		// options.setHeadless(true); // Turns off auto launch chrome window
 		driver = new ChromeDriver(options);
@@ -42,7 +43,7 @@ public class AWLPageTest {
 	}
 
 	@After
-	void shutdown() {
+	public void shutdown() {
 		driver.close();
 	}
 

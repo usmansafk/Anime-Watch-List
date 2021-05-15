@@ -50,16 +50,16 @@ public class AWLController {
 	}
 
 	// READ(one)
-	@GetMapping("/getOne/{id}")
-	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { // NOTE: this is the index position of the id
-		return ResponseEntity.ok(this.service.getByID(id));
-	}
+//	@GetMapping("/getOne/{id}")
+//	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { // NOTE: this is the index position of the id
+//		return ResponseEntity.ok(this.service.getByID(id));
+//	}
 
 	// READ:Custom Query- Find Anime by Name
-	@GetMapping("/findByName")
-	public AWL findByName(@PathParam("name") String name) {
-		return this.service.getAnimeByName(name);
-	}
+	//@GetMapping("/findByName")
+	//public ResponseEntity<AWL> findByName(@PathParam("name") String name) {
+	//	return ResponseEntity.ok(this.service.getAnimeByName(name));
+	//}
 
 	// UPDATE
 	@PutMapping("/update/{id}")

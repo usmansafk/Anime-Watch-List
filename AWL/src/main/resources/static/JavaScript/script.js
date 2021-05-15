@@ -248,7 +248,7 @@ document.querySelector("#anime-form").addEventListener("submit", (e) => {
     if (CRUD.updateWatchList) {
       CRUD.updateAnimeInWatchList(anime);
       message = "Anime updated";
-      //Anime.addAnime(anime);
+
       CRUD.confirmCRUD("Anime updated", "success");
       CRUD.refreshInputBox();
     } else {
@@ -257,15 +257,6 @@ document.querySelector("#anime-form").addEventListener("submit", (e) => {
       //Anime.addAnime(anime);
       CRUD.confirmCRUD("Anime added", "success");
       CRUD.refreshInputBox();
-
-      // if (nameExists) {
-      //   CRUD.confirmCRUD("This anime is already on your watch list", "danger");
-      // } else {
-      //   CRUD.addAnimeToWatchList(anime);
-      //   //Anime.addAnime(anime);
-      //   CRUD.confirmCRUD("Anime added", "success");
-      //   CRUD.refreshInputBox();
-      // }
     }
   }
 });
