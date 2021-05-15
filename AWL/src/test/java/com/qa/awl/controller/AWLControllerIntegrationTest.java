@@ -209,9 +209,9 @@ public class AWLControllerIntegrationTest {
 		//when(awlService.remove(1L)).thenReturn(true);
 		//int res = awlController.removeAnime(1L).getStatusCodeValue();
 		//System.out.println("jsonInput---->"+ response.getBody());
-		Assert.assertEquals(response.getStatusCodeValue(), HttpStatus.INTERNAL_SERVER_ERROR);
+		Assert.assertEquals(response.getStatusCodeValue(), 500);
 		Assert.assertNotEquals(response.getStatusCodeValue(), 404);
-	}
+	}  
 	
 
 
