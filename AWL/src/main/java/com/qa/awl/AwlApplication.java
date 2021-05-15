@@ -11,6 +11,6 @@ public class AwlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AwlApplication.class, args);
 		
-	}
+	}  
  
 }
