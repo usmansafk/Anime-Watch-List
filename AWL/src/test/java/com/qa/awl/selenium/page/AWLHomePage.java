@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class AWLHomePage {
 
 	// -------UI------
-
 	@FindBy(name = "name")
 	private WebElement nameInputBox;
 	
@@ -38,8 +37,8 @@ public class AWLHomePage {
 	@FindBy(linkText = "Anime removed from watch list")
 	private WebElement deleteConfirmed;
 
-	// ----These are specific to the first anime added to table:----
 	
+	// ----These are specific to the first anime added to table:----
 	@FindBy(xpath = "//*[@id=\"watchlist\"]/tr[1]/td[1]")
 	private WebElement showAnimeName;
 
@@ -51,6 +50,7 @@ public class AWLHomePage {
 	@FindBy(xpath = "//*[@id=\"watchlist\"]/tr[1]/td[3]")
 	private WebElement showAnimeRating;
 
+	
 	// ------Getters------
 	public WebElement getNameInputBox() {
 		return nameInputBox;
