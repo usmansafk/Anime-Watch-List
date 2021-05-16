@@ -1,6 +1,5 @@
 package com.qa.awl.controller;
 
-//import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.HashMap;
@@ -71,7 +70,6 @@ public class AWLControllerIntegrationTest {
 		awl.setId(1L);
 		awl.setName("Death Note");
 		awl.setRating(5);
-		// awl.setEpisode(12);
 		awl.equals(stub());
 		awl.equals(object);
 		awl.hashCode();
@@ -81,13 +79,11 @@ public class AWLControllerIntegrationTest {
 	void createAnimeWatchListTest() throws Exception {
 		String URI = "/create";
 		AWL awl = stub();
-		
 
 		HttpEntity<AWL> httpEntity = new HttpEntity<AWL>(awl, httpHeaders);
 		ResponseEntity<String> responseEntity = testRestTemplate.exchange(getCompleteEndPoint(URI), HttpMethod.POST,
 				httpEntity, String.class);
 		String responseOutput = responseEntity.getBody();
-		// assertThat(responseOutput).isEqualTo(jsonInput);
 		assertNotNull(responseOutput, "This should not be null");
 
 	}
@@ -120,17 +116,14 @@ public class AWLControllerIntegrationTest {
 	}
 
 	public String converttoJson(Object object) throws JsonProcessingException {
-		// ObjectMapper objectMapper = new ObjectMapper();
 		return mapper.writeValueAsString(object);
 	}
 
 	@Test
 	void getAllTest() throws Exception {
 		String URI3 = "/getAll";
-		// HttpEntity<AWL> entity = new HttpEntity<AWL>(stub(), httpHeaders);
 		ResponseEntity<String> response = testRestTemplate.exchange(getCompleteEndPoint(URI3), HttpMethod.GET, null,
 				String.class);
-		// int res = awlController.getAnimeWatchList().getStatusCodeValue();
 		Assert.assertEquals(response.getStatusCodeValue(), 200);
 		Assert.assertNotEquals(response.getStatusCodeValue(), 404);
 	}
@@ -138,10 +131,8 @@ public class AWLControllerIntegrationTest {
 	@Test
 	public void removeAnimeTest() throws Exception {
 		String URI5 = "/remove/1";
-		// HttpEntity<AWL> entity = new HttpEntity<AWL>(stub(), httpHeaders);
 		ResponseEntity<String> response = testRestTemplate.exchange(getCompleteEndPoint(URI5), HttpMethod.DELETE, null,
 				String.class);
-
 		Assert.assertEquals(response.getStatusCodeValue(), 204);
 		Assert.assertNotEquals(response.getStatusCodeValue(), 404);
 	}
@@ -149,10 +140,8 @@ public class AWLControllerIntegrationTest {
 	@Test
 	public void removeAnimeTestServerError() throws Exception {
 		String URI5 = "/remove/-1";
-
 		ResponseEntity<String> response = testRestTemplate.exchange(getCompleteEndPoint(URI5), HttpMethod.DELETE, null,
 				String.class);
-
 		Assert.assertEquals(response.getStatusCodeValue(), 500);
 		Assert.assertNotEquals(response.getStatusCodeValue(), 404);
 	}
