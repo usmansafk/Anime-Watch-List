@@ -1,8 +1,8 @@
-# Anime Watch List (Hobby-Web-Application)
+# Anime Watch List 
 
+### Hobby-Web-Application ###
 
 This repository withholds my second project with QA-Academy.
-
 
 This full stack web application allows users to perform CRUD functionalities to create a personalized anime watch list, with an episode tracker and rating system. The application followed the Enterprise Architecture Model, with the utilisation of Java Spring framework in the back end which connected to a MySQL database or h2 instance. 
 
@@ -156,7 +156,7 @@ Maven - Dependency Management
 We use SemVer for versioning.
 
 ## Authors     
-Usman Sajid - usmansafk QA Digital Consultant Software Engineer
+Usman Sajid - [usmansafk] (https://github.com/usmansafk) - QA Digital Consultant Software Engineer
 
 ## License
 This project is licensed under the MIT license - see the LICENSE.md file fo details for help in Choosing a license
