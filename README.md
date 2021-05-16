@@ -14,7 +14,12 @@ The overall application was built using Maven as a CI Pipeline and was linked to
 ## Table of Contents
 
 * [Getting Started](#getting-started)
-* 
+* [Tests](#tests)
+* [Features](#features)
+* [Status](#status)
+* [Built With](#built-with)
+* [Versioning](#versioning)
+* [License](#license)
 
 
 
@@ -64,6 +69,9 @@ Software tools required and where to install them.
 
 8. Conduct tests accordingly by running either on `src/main/resources/java` or a specific class and selecting ‘Run as JUnit’
 
+
+
+
 Once the spring boot application is running, you should the be go on your browser at the link  
 localhost:PORT/index.html and be presented with a website similar to this:
 
@@ -100,7 +108,7 @@ localhost:PORT/index.html and be presented with a website similar to this:
 
 ## Tests
 ### Running the tests: ### 
-Coverage: 78%
+Coverage: 74%
 
 Backed was tested using JUnit and Mockito and the frontend was carried out by Selenium. Static Analysis was used to produce more better cleaner code, removing 2 vulnerabilities and 1 bug and a hotspot.
 
@@ -110,40 +118,43 @@ Unit tests includes testing the members- attributes and methods - of these respe
 
 ### Integration Testing ###
 The Controller class required Integration testing on all the methods within. The idea it to prove that each integration of the application is functioning as expected
+                
+ <img width="858" alt="Screenshot 2021-05-16 at 23 00 36" src="https://user-images.githubusercontent.com/67691352/118414080-8820c580-b69a-11eb-9427-ccb915444be2.png">
 
-                INSERT TEST COVERAGE IMG
 
 
 
 ### User Acceptance Testing ### 
 Selenium was essentially used  to test  the CRUD functionalities from the users perspective to ensure that the website is doing what it is doing what it is supposed to do. To launch front end user acceptance testing, initially launch the project as a SpringBoot application and run on the hosted Live Server from VS Code. Alternatively, if you do not have VS Code then you may require to modify the URL port.
 
-                INSERT TEST SELENIUM IMG
+               
+<img width="678" alt="Screenshot 2021-05-16 at 23 01 15" src="https://user-images.githubusercontent.com/67691352/118414099-a090e000-b69a-11eb-9a1d-a5729e080736.png">
+
 
 
 ## Features
 List of features ready and TODOs for future development
 
 ### Features: ###
-Create a custom anime list by inputting the name of the show
+* Create a custom anime list by inputting the name of the show
 
-Add which current episode you are on
+* Add which current episode you are on
 
-Provide a rating system
+* Provide a rating system
 
-Make changes using edit or remove
+* Make changes using edit or remove
 
-SonarQube for static analysis
+* SonarQube for static analysis
 
-Jira Board https://usmansajid.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=HWA
+* Jira Board https://usmansajid.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=HWA
 
 ### To-do list: ###
 ToDo:
-Community Features: User Profile and Login Page
+* Community Features: User Profile and Login Page
 
-Share Button
+* Share Button
 
-AWL Forum
+* AWL Forum
 
 ## Status 
 
@@ -156,7 +167,7 @@ Maven - Dependency Management
 We use SemVer for versioning.
 
 ## Authors     
-Usman Sajid - [usmansafk] (https://github.com/usmansafk) - QA Digital Consultant Software Engineer
+Usman Sajid - [usmansafk](https://github.com/usmansafk) - QA Digital Consultant Software Engineer
 
 ## License
 This project is licensed under the MIT license - see the LICENSE.md file fo details for help in Choosing a license
