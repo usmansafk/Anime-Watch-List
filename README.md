@@ -48,6 +48,8 @@ Software tools required and where to install them.
 
 * PostMan [(available here)](https://www.postman.com/downloads/)
 
+ [Back to top](#table-of-contents)
+
 
  ### Installing: ### 
  
@@ -78,6 +80,7 @@ Once the spring boot application is running, you should the be go on your browse
 
 <img width="867" alt="Screenshot 2021-05-16 at 18 23 31" src="https://user-images.githubusercontent.com/67691352/118406401-d4a4da80-b673-11eb-994c-ce7a4ec0d75f.png">
 
+ [Back to top](#table-of-contents)
 
  ### Technologies: ### 
  (and Enterprise Architecture)
@@ -106,6 +109,8 @@ Once the spring boot application is running, you should the be go on your browse
 
 <img width="929" alt="Screenshot 2021-05-16 at 18 23 10" src="https://user-images.githubusercontent.com/67691352/118406387-c656be80-b673-11eb-93dc-2162469934ba.png">
 
+ [Back to top](#table-of-contents)
+ 
 ## Tests
 ### Running the tests: ### 
 Coverage: 87%
@@ -119,8 +124,10 @@ Unit tests includes testing the members- attributes and methods - of these respe
 ### Integration Testing ###
 The Controller class required Integration testing on all the methods within. The idea it to prove that each integration of the application is functioning as expected
                 
- <img width="858" alt="Screenshot 2021-05-16 at 23 00 36" src="https://user-images.githubusercontent.com/67691352/118414080-8820c580-b69a-11eb-9427-ccb915444be2.png">
 
+<img width="752" alt="Screenshot 2021-05-17 at 00 55 21" src="https://user-images.githubusercontent.com/67691352/118417114-9080fc80-b6aa-11eb-9f7c-7c997284fe57.png">
+
+_Unit and Integeration Tests_
 
 
 ### User Acceptance Testing ### 
@@ -131,7 +138,9 @@ Note:There is a temporary issue, that revision. Each selenium test works however
                
 <img width="678" alt="Screenshot 2021-05-16 at 23 01 15" src="https://user-images.githubusercontent.com/67691352/118414099-a090e000-b69a-11eb-9a1d-a5729e080736.png">
 
+_Selenium Test Methods (These do not count towards coverage)_
 
+ [Back to top](#table-of-contents)
 
 ## Features
 List of features ready and TODOs for future development
@@ -149,6 +158,8 @@ List of features ready and TODOs for future development
 
 * Jira Board https://usmansajid.atlassian.net/secure/RapidBoard.jspa?rapidView=3&projectKey=HWA
 
+ [Back to top](#table-of-contents)
+
 ### To-do list: ###
 ToDo:
 * Community Features: User Profile and Login Page
@@ -157,6 +168,8 @@ ToDo:
 
 * AWL Forum
 
+ [Back to top](#table-of-contents)
+
 ## Status 
 
 Project MVP is complete
@@ -164,16 +177,27 @@ Project MVP is complete
 ## Built With 
 Maven - Dependency Management
 
+ [Back to top](#table-of-contents)
+
 ## Versioning 
 We use SemVer for versioning.
+
+ [Back to top](#table-of-contents)
 
 ## Authors     
 Usman Sajid - [usmansafk](https://github.com/usmansafk) - QA Digital Consultant Software Engineer
 
+ [Back to top](#table-of-contents)
+
 ## License
 This project is licensed under the MIT license - see the LICENSE.md file fo details for help in Choosing a license
 
-## Acknowledgments
-Thank you to all the trainers at QA
+ [Back to top](#table-of-contents)
+
+## Acknowledgments!
+
+Thank you to all the trainers at QA Academy 
+
+ [Back to top](#table-of-contents)
 
 
