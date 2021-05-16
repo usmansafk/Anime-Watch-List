@@ -7,13 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AWLHomePage {
+public class AWLMainPage {
 
 	// -------UI------
-	
-	//public static String xpName = "//input[@placeholder='Name of Anime']";
-	
-	@FindBy(name = "//input[@placeholder='Name of Anime']")
+	@FindBy(name = "name")
 	private WebElement nameInputBox;
 	
 
