@@ -26,11 +26,11 @@ public class AWLHomePage {
 	private WebElement createButton;
 
 
-	@FindBy(name = "far fa-edit text-primary")
+	@FindBy(xpath = "//i[contains(@class, 'edit')]")
 	private WebElement editButton;
 
 	
-	@FindBy(name = "fas fa-trash-alt text-danger")
+	@FindBy(xpath = "//i[contains(@class, 'trash')]")
 	private WebElement deleteButton;
 
 
