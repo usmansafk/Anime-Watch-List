@@ -81,7 +81,6 @@ public class AWLControllerIntegrationTest {
 	void createAnimeWatchListTest() throws Exception {
 		String URI = "/create";
 		AWL awl = stub();
-		String jsonInput = this.converttoJson(awl);
 
 		HttpEntity<AWL> httpEntity = new HttpEntity<AWL>(awl, httpHeaders);
 		ResponseEntity<String> responseEntity = testRestTemplate.exchange(getCompleteEndPoint(URI), HttpMethod.POST,
