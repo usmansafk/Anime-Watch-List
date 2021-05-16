@@ -28,15 +28,6 @@ public class AWLService {
 		return this.repo.findAll();
 	}
 
-	public AWL getByID(Long id) {
-		Optional<AWL> optionalAnime = this.repo.findById(id);
-		return optionalAnime.get();
-	}
-
-	public AWL getAnimeByName(String name) {
-		return this.repo.findByName(name);
-	}
-
 	public AWL update(Long id, AWL updateAnimeInfo) {
 		AWL anime = this.repo.findById(id).orElseThrow();
 		anime.setName(updateAnimeInfo.getName());

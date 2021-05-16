@@ -2,8 +2,6 @@ package com.qa.awl.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +20,6 @@ import com.qa.awl.service.AWLService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-//@RequestMapping("/AWL")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class AWLController {
@@ -48,18 +45,6 @@ public class AWLController {
 	public ResponseEntity<List<AWL>> getAnimeWatchList() {
 		return ResponseEntity.ok(this.service.getAll());
 	}
-
-	// READ(one)
-//	@GetMapping("/getOne/{id}")
-//	public ResponseEntity<AWL> getAnimeById(@PathVariable Long id) { // NOTE: this is the index position of the id
-//		return ResponseEntity.ok(this.service.getByID(id));
-//	}
-
-	// READ:Custom Query- Find Anime by Name
-	//@GetMapping("/findByName")
-	//public ResponseEntity<AWL> findByName(@PathParam("name") String name) {
-	//	return ResponseEntity.ok(this.service.getAnimeByName(name));
-	//}
 
 	// UPDATE
 	@PutMapping("/update/{id}")

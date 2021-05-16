@@ -55,21 +55,6 @@ public class AWLServiceUnitTest {
 	}
 
 	@Test
-	void getByIdTest() {
-		Optional<AWL> awlOptional = Optional.ofNullable(stub());
-		when(repo.findById(1L)).thenReturn(awlOptional);
-		AWL awl = service.getByID(1l);
-		verify(repo, times(1)).findById(any());
-	}
-
-	@Test
-	void getAnimeByNameTest() {
-		when(repo.findByName("opm")).thenReturn(stub());
-		AWL awl = service.getAnimeByName("opm");
-		Assert.assertEquals(awl.getEpisode(), 1);
-	}
-
-	@Test
 	void updateTest() {
 		Optional<AWL> awl = Optional.of(Optional.ofNullable(stub()).get());
 		when(repo.findById(any())).thenReturn(awl);

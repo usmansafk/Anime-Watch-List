@@ -88,19 +88,6 @@ class CRUD {
     table.appendChild(row);
   }
 
-  //READ>if already exists
-  static async checkForAnime(name) {
-    const animes = await Anime.getAnime();
-    let alert = false;
-
-    animes.forEach((show, id) => {
-      if (show.name === name) {
-        alert = true;
-      }
-    });
-    return alert;
-  }
-
   //UPDATE
   static updateAnimeInWatchList(anime) {
     if (CRUD.updateTarget && CRUD.updateWatchList) {
@@ -189,7 +176,7 @@ class Anime {
         }).then((res) => {
           console.log("deleted");
         });
-        // animes.splice(id, 1);
+       
       }
     });
 
@@ -201,26 +188,22 @@ class Anime {
     if (CRUD.updateWatchList) {
       Anime.updatedAnime(anime);
     } else {
-      const nameExists = CRUD.checkForAnime(name);
-      if (nameExists) {
-        CRUD.confirmCRUD("This anime is already on your watch list", "danger");
-      } else {
-        fetch(`${API_URL}/create`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: anime.name,
-            episode: anime.watched,
-            rating: anime.rating,
-          }),
-        }).then((res) => {
-          //animes.push(anime);
-          return res.json();
-        });
-      }
-      //localStorage.setItem("animes", JSON.stringify(animes));
+      
+      fetch(`${API_URL}/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: anime.name,
+          episode: anime.watched,
+          rating: anime.rating,
+        }),
+      }).then((res) => {
+        
+        return res.json();
+      });
+     
     }
   }
 }
@@ -252,9 +235,9 @@ document.querySelector("#anime-form").addEventListener("submit", (e) => {
       CRUD.confirmCRUD("Anime updated", "success");
       CRUD.refreshInputBox();
     } else {
-      // const nameExists = CRUD.checkForAnime(name);
+      
       CRUD.addAnimeToWatchList(anime);
-      //Anime.addAnime(anime);
+      
       CRUD.confirmCRUD("Anime added", "success");
       CRUD.refreshInputBox();
     }
