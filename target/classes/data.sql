@@ -1,0 +1,1 @@
+INSERT INTO `awl`(`episode`,`name`,`rating`)VALUES(5,'opm',1);

@@ -1,0 +1,7 @@
+com/qa/awl/repo/AWLRepo.class
+com/qa/awl/AwlApplication.class
+com/qa/awl/controller/AWLController.class
+com/qa/awl/service/AWLService.class
+com/qa/awl/domain/AWL$AWLBuilder.class
+com/qa/awl/domain/AWL.class
+com/qa/awl/config/StaticResourceConfiguration.class
