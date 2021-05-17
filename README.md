@@ -1,5 +1,5 @@
 # Anime Watch List 
-Coverage: 87%
+Coverage: 87.7%
 ### Hobby-Web-Application ###
 
 This repository withholds my second project with QA-Academy.
@@ -113,7 +113,7 @@ Once the spring boot application is running, you should the be go on your browse
  
 ## Tests
 ### Running the tests: ### 
-Coverage: 87%
+Coverage: 87.7% main
 
 Backed was tested using JUnit and Mockito and the frontend was carried out by Selenium. Static Analysis was used to produce more better cleaner code, removing 2 vulnerabilities and 1 bug and a hotspot.
 
