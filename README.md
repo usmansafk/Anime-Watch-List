@@ -1,3 +1,4 @@
+
 # Anime Watch List 
 Coverage: 87.7%
 ### Hobby-Web-Application ###
@@ -199,5 +200,6 @@ This project is licensed under the MIT license - see the LICENSE.md file fo deta
 Thank you to all the trainers at QA Academy 
 
  [Back to top](#table-of-contents)
+
 
 
