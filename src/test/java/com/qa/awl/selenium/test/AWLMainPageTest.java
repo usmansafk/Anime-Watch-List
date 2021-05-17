@@ -31,7 +31,7 @@ import com.qa.awl.selenium.page.AWLMainPage;
 public class AWLMainPageTest {
 	
 	/*
-	 * Each test passes if ran 
+	 * Each test passes if ran individually.
 	 * Run tests individually or a few times to get pass. 
 	 * Issue: requires wait config
 	 * 

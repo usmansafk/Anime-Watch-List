@@ -32,14 +32,15 @@ public class AWLController {
 	public AWLController(AWLService service) {
 		this.service = service;
 	}
- 
+
 	// ----- CRUD Controller Mappings -----
-	
+
 	// CREATE
 	@PostMapping("/create")
 	public ResponseEntity<AWL> createAnimeWatchList(@RequestBody AWL anime) {
 		return new ResponseEntity<>(this.service.create(anime), HttpStatus.CREATED);
-	} 
+	}
+
 	// READ (all)
 	@GetMapping("/getAll")
 	public ResponseEntity<List<AWL>> getAnimeWatchList() {

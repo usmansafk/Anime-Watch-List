@@ -10,13 +10,13 @@ import com.qa.awl.domain.AWL.AWLBuilder;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 public class AWLDomainTest {
-	
+
 	@Test
 	public void testEqualsAWL() {
 		EqualsVerifier.simple().forClass(AWL.class).withIgnoredAnnotations(Id.class).verify();
 
 	}
-	
+
 	@Test
 	public void testAllArgConstructor() {
 		AWL awl1 = new AWL(1L, "OPM", 12, 5);
@@ -28,7 +28,7 @@ public class AWLDomainTest {
 		Assert.assertNotEquals(awl2, awl3);
 		Assert.assertNotEquals(awl1, awl3);
 	}
-	
+
 	@Test
 	public void testBuilder() {
 		AWLBuilder awlBuilder = AWL.builder().name("OPM").id(1L).episode(4).rating(7);
